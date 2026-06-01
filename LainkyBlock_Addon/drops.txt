@@ -12,47 +12,47 @@ ID=minecraft:cake,NBTTag=(display=(Name=#jsonStr(text="Gateau Wankil",color=yell
 / ========== B. BORN IN CHAOS INTEGRATION (GOOD DROPS - RARE & LEGENDARY) ==========
 
 / Nightmare Scythe (Faux de Cauchemar - Vol de vie) -> TRÈS RARE / LÉGENDAIRE
-ID=born_in_chaos_ri:nightmare_scythe,NBTTag=(display=(Name=#jsonStr(text="Faux de Cauchemar de Laink",color=dark_red,bold=true)))@luck=3
+ID=born_in_chaos_v1:nightmare_scythe,NBTTag=(display=(Name=#jsonStr(text="Faux de Cauchemar de Laink",color=dark_red,bold=true)))@luck=3
 
 / Fel Lamp (Invoque le Felsteed) -> RARE
-ID=born_in_chaos_ri:fel_lamp@luck=2
+ID=born_in_chaos_v1:fel_lamp@luck=2
 
 / Stormcaller's Horn (Invoque une tempete de neige) -> RARE
-ID=born_in_chaos_ri:stormcaller_horn@luck=2
+ID=born_in_chaos_v1:stormcaller_horn@luck=2
 
 / Full Nightmare Armor Set (Lainky-Style Night) -> TRÈS RARE / LÉGENDAIRE
 group(
-    ID=born_in_chaos_ri:nightmare_helmet;
-    ID=born_in_chaos_ri:nightmare_chestplate;
-    ID=born_in_chaos_ri:nightmare_leggings;
-    ID=born_in_chaos_ri:nightmare_boots
+    ID=born_in_chaos_v1:nightmare_helmet;
+    ID=born_in_chaos_v1:nightmare_chestplate;
+    ID=born_in_chaos_v1:nightmare_leggings;
+    ID=born_in_chaos_v1:nightmare_boots
 )@luck=3
 
 / Rare Crafting Materials (Born in Chaos) -> RARE
 group(
-    ID=born_in_chaos_ri:fused_bone,amount=#rand(4,8);
-    ID=born_in_chaos_ri:phantom_powder,amount=#rand(4,8);
-    ID=born_in_chaos_ri:shard_of_permafrost,amount=#rand(2,4)
+    ID=born_in_chaos_v1:fused_bone,amount=#rand(4,8);
+    ID=born_in_chaos_v1:phantom_powder,amount=#rand(4,8);
+    ID=born_in_chaos_v1:shard_of_permafrost,amount=#rand(2,4)
 )@luck=2
 
 / ========== C. BORN IN CHAOS INTEGRATION (BAD DROPS & MONSTERS) ==========
 
 / Evilometer (Indicateur de mechancete) + Creeper
 group(
-    ID=born_in_chaos_ri:evilometer;
+    ID=born_in_chaos_v1:evilometer;
     type=entity,ID=minecraft:creeper
 )@luck=-1
 
 / Door Knight Ambush (Born in Chaos Knight)
 group(
     type=difficulty,ID=hard;
-    type=entity,ID=born_in_chaos_ri:door_knight,NBTTag=(CustomName=#jsonStr(text="Chevalier de Wankil",color=dark_red),CustomNameVisible=true)
+    type=entity,ID=born_in_chaos_v1:door_knight,NBTTag=(CustomName=#jsonStr(text="Chevalier de Wankil",color=dark_red),CustomNameVisible=true)
 )@luck=-2
 
 / Nightmare Stalker Spawn
 group(
     type=difficulty,ID=hard;
-    type=entity,ID=born_in_chaos_ri:nightmare_stalker
+    type=entity,ID=born_in_chaos_v1:nightmare_stalker
 )@luck=-2
 
 / ========== D. LAINK & WANKIL HUMOR & TRAPS ==========
@@ -87,11 +87,11 @@ group(
 group(
     ID=minecraft:diamond_axe,NBTTag=(
         display=(Name=#jsonStr(text="La Hache",color=gold,bold=true,italic=false)),
-        Enchantments:[
-            {id:"minecraft:sharpness",lvl:5s},
-            {id:"minecraft:efficiency",lvl:5s},
-            {id:"minecraft:unbreaking",lvl:3s},
-            {id:"minecraft:mending",lvl:1s}
+        Enchantments=[
+            (id=sharpness,lvl=5),
+            (id=efficiency,lvl=5),
+            (id=unbreaking,lvl=3),
+            (id=mending,lvl=1)
         ]
     );
     type=message,ID="LAAA HAAACHEEE !!!"
@@ -107,8 +107,8 @@ group(
             (buy=(id="minecraft:diamond",Count=#rand(12,24)),sell=(id="lucky:amongus_lucky_block",Count=1),maxUses=5),
             (buy=(id="minecraft:diamond",Count=#rand(12,24)),sell=(id="lucky:pink_lucky_block",Count=1),maxUses=5),
             (buy=(id="minecraft:diamond",Count=#rand(12,24)),sell=(id="lucky:water_lucky_block",Count=1),maxUses=5),
-            (buy=(id="minecraft:emerald",Count=#rand(16,24)),sell=(id="born_in_chaos_ri:fused_bone",Count=8),maxUses=5),
-            (buy=(id="minecraft:emerald",Count=#rand(16,24)),sell=(id="born_in_chaos_ri:phantom_powder",Count=8),maxUses=5)
+            (buy=(id="minecraft:emerald",Count=#rand(16,24)),sell=(id="born_in_chaos_v1:fused_bone",Count=8),maxUses=5),
+            (buy=(id="minecraft:emerald",Count=#rand(16,24)),sell=(id="born_in_chaos_v1:phantom_powder",Count=8),maxUses=5)
         ]),
         CustomName=#jsonStr(text="Terracid le Marchand",color=red,bold=true),CustomNameVisible=true
     );
