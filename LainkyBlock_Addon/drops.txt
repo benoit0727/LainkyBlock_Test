@@ -1,0 +1,116 @@
+/ ==========================================
+/        LAINKYBLOCK - DROPS CONFIGURATION
+/ ==========================================
+
+/ ========== A. VANILLA DROPS & FOOD ==========
+ID=minecraft:cookie,amount=64,NBTTag=(display=(Name=#jsonStr(text="Cookie de Laink",color=cyan)))@luck=0
+ID=minecraft:diamond,amount=#rand(1,5)@luck=1
+ID=minecraft:lapis_lazuli,amount=#rand(16,32)@luck=0
+ID=minecraft:emerald,amount=#rand(4,12)@luck=1
+ID=minecraft:cake,NBTTag=(display=(Name=#jsonStr(text="Gateau Wankil",color=yellow)))@luck=0
+
+/ ========== B. BORN IN CHAOS INTEGRATION (GOOD DROPS - RARE & LEGENDARY) ==========
+
+/ Nightmare Scythe (Faux de Cauchemar - Vol de vie) -> TRÈS RARE / LÉGENDAIRE
+ID=born_in_chaos_ri:nightmare_scythe,NBTTag=(display=(Name=#jsonStr(text="Faux de Cauchemar de Laink",color=dark_red,bold=true)))@luck=3
+
+/ Fel Lamp (Invoque le Felsteed) -> RARE
+ID=born_in_chaos_ri:fel_lamp@luck=2
+
+/ Stormcaller's Horn (Invoque une tempete de neige) -> RARE
+ID=born_in_chaos_ri:stormcaller_horn@luck=2
+
+/ Full Nightmare Armor Set (Lainky-Style Night) -> TRÈS RARE / LÉGENDAIRE
+group(
+    ID=born_in_chaos_ri:nightmare_helmet;
+    ID=born_in_chaos_ri:nightmare_chestplate;
+    ID=born_in_chaos_ri:nightmare_leggings;
+    ID=born_in_chaos_ri:nightmare_boots
+)@luck=3
+
+/ Rare Crafting Materials (Born in Chaos) -> RARE
+group(
+    ID=born_in_chaos_ri:fused_bone,amount=#rand(4,8);
+    ID=born_in_chaos_ri:phantom_powder,amount=#rand(4,8);
+    ID=born_in_chaos_ri:shard_of_permafrost,amount=#rand(2,4)
+)@luck=2
+
+/ ========== C. BORN IN CHAOS INTEGRATION (BAD DROPS & MONSTERS) ==========
+
+/ Evilometer (Indicateur de mechancete) + Creeper
+group(
+    ID=born_in_chaos_ri:evilometer;
+    type=entity,ID=minecraft:creeper
+)@luck=-1
+
+/ Door Knight Ambush (Born in Chaos Knight)
+group(
+    type=difficulty,ID=hard;
+    type=entity,ID=born_in_chaos_ri:door_knight,NBTTag=(CustomName=#jsonStr(text="Chevalier de Wankil",color=dark_red),CustomNameVisible=true)
+)@luck=-2
+
+/ Nightmare Stalker Spawn
+group(
+    type=difficulty,ID=hard;
+    type=entity,ID=born_in_chaos_ri:nightmare_stalker
+)@luck=-2
+
+/ ========== D. LAINK & WANKIL HUMOR & TRAPS ==========
+
+/ Zombie "Viewer" Trap
+group(
+    type=entity,ID=minecraft:zombie,NBTTag=(
+        Small=true,
+        ArmorItems=[(id=diamond_boots,Count=1),(id=diamond_leggings,Count=1),(id=diamond_chestplate,Count=1),(id=diamond_helmet,Count=1)],
+        HandItems=[(id=diamond_sword,Count=1)],
+        CustomName=#jsonStr(text="Le Viewer",color=yellow,bold=true),CustomNameVisible=true
+    )
+)@luck=-2
+
+/ Great Fortune of the Card Pack
+group(
+    ID=minecraft:diamond_block,amount=2;
+    ID=minecraft:emerald_block,amount=4;
+    ID=minecraft:gold_block,amount=8;
+    type=entity,ID=minecraft:firework_rocket,NBTTag=(LifeTime=20,FireworksItem=(id=firework_rocket,Count=1,tag=#randFireworksRocket)),amount=15,posOffset=#circleOffset(0,2)
+)@luck=2
+
+/ Anvil Rain
+group(
+    type=fill,ID=minecraft:air,size=(1,20,1),pos=#pPos;
+    type=fill,ID=minecraft:anvil,size=(1,2,1),pos=(#pPosX,#pPosY+20,#pPosZ)
+)@luck=-2
+
+/ ========== E. LEGENDARY AXE DROP (MOINS RARE) ==========
+
+/ LAAA HAAACHEEE !!!!!!!! -> MOINS RARE (LUCK=1)
+group(
+    ID=minecraft:diamond_axe,NBTTag=(
+        display=(Name=#jsonStr(text="La Hache",color=gold,bold=true,italic=false)),
+        Enchantments:[
+            {id:"minecraft:sharpness",lvl:5s},
+            {id:"minecraft:efficiency",lvl:5s},
+            {id:"minecraft:unbreaking",lvl:3s},
+            {id:"minecraft:mending",lvl:1s}
+        ]
+    );
+    type=message,ID="LAAA HAAACHEEE !!!"
+)@luck=1
+
+/ ========== F. TERRACID LE MARCHAND WANKIL ==========
+
+/ Terracid le Marchand -> RARE (LUCK=2)
+group(
+    type=entity,ID=minecraft:villager,NBTTag=(
+        VillagerData=(level=5,profession=weaponsmith),
+        Offers=(Recipes=[
+            (buy=(id="minecraft:diamond",Count=#rand(12,24)),sell=(id="lucky:amongus_lucky_block",Count=1),maxUses=5),
+            (buy=(id="minecraft:diamond",Count=#rand(12,24)),sell=(id="lucky:pink_lucky_block",Count=1),maxUses=5),
+            (buy=(id="minecraft:diamond",Count=#rand(12,24)),sell=(id="lucky:water_lucky_block",Count=1),maxUses=5),
+            (buy=(id="minecraft:emerald",Count=#rand(16,24)),sell=(id="born_in_chaos_ri:fused_bone",Count=8),maxUses=5),
+            (buy=(id="minecraft:emerald",Count=#rand(16,24)),sell=(id="born_in_chaos_ri:phantom_powder",Count=8),maxUses=5)
+        ]),
+        CustomName=#jsonStr(text="Terracid le Marchand",color=red,bold=true),CustomNameVisible=true
+    );
+    type=message,ID="[Terracid] Allez viens faire du business ! J'ai plein de trucs rares a echanger."
+)@luck=2
