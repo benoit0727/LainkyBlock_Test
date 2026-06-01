@@ -73,3 +73,37 @@ Si vous utilisez le dossier non zippé dans votre dossier `addons/lucky/`, vous 
 
 1. **Textures** : Remplacez l'image PNG dans `assets/lucky/textures/block/lainkyblock.png`.
 2. **Rechargement rapide** : En jeu, appuyez sur **`F3 + T`** pour voir vos modifications de texture s'appliquer instantanément sans relancer le jeu !
+
+## 🏛️ 4. Intégrer le LainkyBlock dans des Structures (ex: Born in Chaos)
+
+Vous pouvez remplacer des blocs par défaut (comme des coffres ou des blocs de valeur) dans les ruines et donjons d'un mod pour y placer vos **LainkyBlocks** !
+
+### A. Extraire le fichier de structure `.nbt`
+1. Trouvez le fichier `.jar` du mod de donjon (ex: `born_in_chaos_[Forge]1.20.1_1.7.5.jar`) dans votre dossier `mods`.
+2. Ouvrez le `.jar` avec un logiciel d'archive comme **7-Zip** ou **WinRAR**.
+3. Allez dans `data/[nom_du_mod]/structures/` et extrayez le fichier `.nbt` de la structure voulue (ex: `graveyard.nbt`).
+
+---
+
+### B. Modifier le fichier `.nbt` sans ouvrir Minecraft (Via NBTExplorer)
+1. Ouvrez le fichier `.nbt` avec le logiciel **NBTExplorer** (ou un éditeur de NBT en ligne).
+2. Déroulez le dossier **`palette`** (la liste des blocs utilisés dans la structure).
+3. Repérez l'entrée du bloc que vous voulez remplacer (par exemple, un coffre `minecraft:chest` ou un bloc décoratif) :
+   * Remplacez la valeur de son tag **`Name`** par : **`lucky:lainkyblock`**.
+   * **Nettoyage :** Si c'était un coffre, faites un clic droit sur le sous-dossier **`Properties`** et cliquez sur **`Delete`** (car le Lucky Block n'utilise pas les propriétés `facing` ou `waterlogged`).
+4. **Supprimer l'inventaire du coffre (Très Important ⚠️) :**
+   * Allez dans le dossier **`tiles`** (ou **`block_entities`**) à la racine du fichier `.nbt`.
+   * Parcourez les éléments pour trouver celui qui a la position (`pos`) correspondant à votre coffre.
+   * Clic droit sur cet élément ➡️ **`Delete`** pour effacer ses données d'inventaire et éviter tout conflit.
+5. Enregistrez les modifications.
+
+---
+
+### C. Déploiement dans l'Addon
+Placez le fichier `.nbt` ainsi modifié à cet endroit précis dans votre dossier d'addon :
+📂 `LainkyBlock_Addon/data/[nom_du_mod]/structures/[nom_de_la_structure].nbt`
+
+*Exemple pour Born in Chaos :*  
+📂 `LainkyBlock_Addon/data/born_in_chaos_v1/structures/ruin_castle.nbt`
+
+Désormais, dès que cette ruine apparaîtra dans votre monde, le **LainkyBlock** sera déjà généré à l'intérieur.
